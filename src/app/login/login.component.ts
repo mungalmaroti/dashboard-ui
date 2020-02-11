@@ -11,7 +11,7 @@ import { ConnectionService } from '../services/connection.service';
 })
 export class LoginComponent implements OnInit {
   public useUnsubscribe: Subscription;
-  public userLogin : IUser[] = [];
+  public userLogin : IUser;
   public user : IUser = {username:'',password:'', role:''};
   constructor(private connectionService: ConnectionService, private route: Router){}
 
@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   public login(){
     if(this.user && this.user.username && this.user.password ){
       this.useUnsubscribe = this.connectionService.showUserLogin(this.user).subscribe((data:IUser)=>{
-        this.userLogin.push(data);
-        if(data.username === this.user.username && data.password === this.user.password){
+        if(data && data.username){
           this.route.navigate(['/dashboard']);
         }
       })
