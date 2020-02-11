@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   public login(){
     if(this.user && this.user.username && this.user.password ){
       this.useUnsubscribe = this.connectionService.showUserLogin(this.user).subscribe((data:IUser)=>{
-        if(data && data.username){
+        if(data && data[0].username){
           this.route.navigate(['/dashboard']);
         }
       })
