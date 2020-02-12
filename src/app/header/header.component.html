@@ -35,7 +35,7 @@
             <a class="nav-link">User </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Current time</a>
+            <a class="nav-link"> Time : {{currentDate | date:'hh:mm:ss a':'+0530'}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link">Status</a>
@@ -46,7 +46,7 @@
               <i class="fa fa-user-circle fa-2x text-secondary" aria-hidden="true"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item">View Detail</a>
+              <a class="dropdown-item">View Profile</a>
               <a class="dropdown-item">Logout</a>
             </div>
           </li>
