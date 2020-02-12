@@ -1,18 +1,20 @@
-<div class="container">
+<div class="container-fluid bg-image">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
-        <div class="card card-signin my-5">
+        <div class="card d-center">
           <div class="card-body">
-            <img src="../../assets/login-b.png" class="pt-2 pb-1 center-block" style="height:74px;"  />
+            <img src="../../assets/login-e.png" class="mb-3 l-user" />
             <form class="form-signin" (ngSubmit)="login()">
                 <div class="form-group">
                   <mat-form-field appearance="outline">
-                    <input matInput placeholder="Username" placeholder="Email address" [(ngModel)]="user.username" name="username" required autofocus>
+                    <input matInput placeholder="Username" placeholder="Email address" [(ngModel)]="user.username" name="username" autofocus>
+                    <mat-icon matSuffix><i class="fa fa-user-circle-o text-success" aria-hidden="true"></i></mat-icon>
                     </mat-form-field>
                 </div>
                 <div class="form-group">
                   <mat-form-field appearance="outline">
-                    <input matInput placeholder="Password" [(ngModel)]="user.password" type="password" name="password" required>
+                    <input matInput placeholder="Password" [(ngModel)]="user.password" type="password" name="password">
+                    <mat-icon matSuffix><i class="fa fa-unlock-alt text-success" aria-hidden="true"></i></mat-icon>
                   </mat-form-field>
                 </div>
                 <button type="submit" class="float-right btn btn-success">Login</button>

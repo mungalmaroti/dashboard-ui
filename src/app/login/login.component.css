@@ -1,2 +1,22 @@
 .mat-card:not([class*=mat-elevation-z]), .form-control:focus{box-shadow:none !important;}
 .mat-form-field{display:block !important;}
+
+.bg-image{
+    background: url('../../assets/photo-b.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+  }
+.d-center{
+  top: 50%;
+  left: 0%;
+  transform: translate(0%,0%);
+}
+.l-user{
+  max-height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
