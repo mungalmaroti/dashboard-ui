@@ -11,5 +11,6 @@
 	display: block;
 	height: 100%;
     overflow: auto;
-    height: 25vh;
+    height: 81vh;
+    flex: 0 0 auto;
 }
