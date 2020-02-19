@@ -5,3 +5,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .bg-school {
     background-color: #65b8ffb8!important;
 }
+.form-control:focus{box-shadow:none !important;}

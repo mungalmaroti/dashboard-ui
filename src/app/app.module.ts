@@ -9,7 +9,7 @@ import { AppMaterialModule } from './app-material.module';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent,EditDialog } from './dashboard/dashboard.component';
 
 import { ConnectionService } from '../app/services/connection.service';
 
@@ -23,6 +23,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
+    EditDialog,
     SideBarComponent
   ],
   imports: [
@@ -35,6 +36,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     HttpClientModule
   ],
   providers: [ConnectionService],
+  entryComponents:[EditDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,29 @@
 <p>Hello Dashboard</p>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Emp_Job_Id</th>
+                <th>Emp_F_Name</th>
+                <th>Emp_L_Name</th>
+                <th>Emp_Email</th>
+                <th>Emp_Phone</th>
+                <th>Mnger_Id</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employee">
+                <td>{{emp.JOB_ID}}</td>
+                <td>{{emp.FIRST_NAME}}</td>
+                <td>{{emp.LAST_NAME}}</td>
+                <td>{{emp.EMAIL}}</td>
+                <td>{{emp.PHONE_NUMBER}}</td>
+                <td>{{emp.MANAGER_ID}}</td>
+                <td><a (click)="editEmployee(emp)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

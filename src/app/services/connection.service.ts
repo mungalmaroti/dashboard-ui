@@ -13,4 +13,12 @@ export class ConnectionService {
     return this.http.get(environment.baseURL+'/api/users/'+user.username+'/'+user.password);
     //return this.http.get(environment.baseURL+'/api/users?username='+user.username+'&password='+user.password);
   }
+
+  getEmployeeList(){
+    return this.http.get(environment.baseURL+'/employee/getList')
+  }
+
+  updateEmployeeList(item:any){
+    return this.http.put(environment.baseURL+'/employee/updateList',{getEditDetail:item})
+  }
 }
