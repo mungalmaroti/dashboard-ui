@@ -17,8 +17,13 @@ export class ConnectionService {
   getEmployeeList(){
     return this.http.get(environment.baseURL+'/employee/getList')
   }
-
+  createEmployee(obj){
+    return this.http.post(environment.baseURL+'/employee/create',{body:obj})
+  }
   updateEmployeeList(item:any){
-    return this.http.put(environment.baseURL+'/employee/updateList',{getEditDetail:item})
+    return this.http.put(environment.baseURL+'/employee/update',{id: item.EMPLOYEE_ID ,body:item})
+  }
+  deleteEmployee(id:number){
+    return this.http.delete(environment.baseURL+'/employee/remove'+id);
   }
 }

@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public employee: any = [];
   public unsubscribeList : Subscription;
-  public unSubscribeEditList: Subscription;
+  public employeeObj: any = {};
   
   constructor(private connectionService: ConnectionService,public dialog: MatDialog) { }
 
@@ -27,15 +27,43 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.unsubscribeList.unsubscribe();
   }
 
-  editEmployee(item){
+  addnewEmployee(){
     const dialogRef = this.dialog.open(EditDialog,{
-      data:item
+      data:{
+        empObj :this.employeeObj,
+        isFlag : true
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.unSubscribeEditList = this.connectionService.updateEmployeeList(result).subscribe((data)=>{
-        this.employee = data;
-      })
+      if(result){
+        this.unsubscribeList = this.connectionService.createEmployee(result).subscribe((data)=>{
+          console.log('data',data);
+          this.employee = data;
+        })
+      }
     });
+  }
+
+  editEmployee(item){
+    const dialogRef = this.dialog.open(EditDialog,{
+      data:{
+        empObj :item,
+        isFlag : false
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.unsubscribeList = this.connectionService.updateEmployeeList(result).subscribe((data)=>{
+          this.employee = data;
+        })
+      }
+    });
+  }
+
+  removeEmployee(id : number){
+    this.unsubscribeList = this.connectionService.deleteEmployee(id).subscribe((data)=>{
+      this.employee = data;
+    })
   }
 }
 
@@ -44,6 +72,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   templateUrl: 'edit-content-dialog.html',
 })
 export class EditDialog {
-  
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any){}
+  public data : any = [];
+  public isFlag :boolean = false;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public getData: any){
+    this.data = getData.empObj
+    this.isFlag = getData.isFlag
+  }
+
 }

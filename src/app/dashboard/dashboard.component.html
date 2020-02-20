@@ -1,4 +1,5 @@
-<p>Hello Dashboard</p>
+<a class="float-right text-primary" (click)="addnewEmployee()"><i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i></a>
+<div class="float-clear"></div>
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
         <thead>
@@ -22,7 +23,7 @@
                 <td>{{emp.PHONE_NUMBER}}</td>
                 <td>{{emp.MANAGER_ID}}</td>
                 <td><a (click)="editEmployee(emp)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+                <td><a (click)="removeEmployee(emp.EMPLOYEE_ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
             </tr>
         </tbody>
     </table>
