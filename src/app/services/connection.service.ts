@@ -10,7 +10,7 @@ export class ConnectionService {
   constructor(private http: HttpClient) { }
 
   showUserLogin(user){
-    return this.http.get(environment.baseURL+'/api/users/'+user.username+'/'+user.password);
+    return this.http.get(environment.baseURL+'/api/users?username='+user.username+'&password='+user.password);
     //return this.http.get(environment.baseURL+'/api/users?username='+user.username+'&password='+user.password);
   }
 
