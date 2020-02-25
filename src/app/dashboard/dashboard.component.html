@@ -1,30 +1,63 @@
-<a class="float-right text-primary" (click)="addnewEmployee()"><i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i></a>
-<div class="float-clear"></div>
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Emp_Job_Id</th>
-                <th>Emp_F_Name</th>
-                <th>Emp_L_Name</th>
-                <th>Emp_Email</th>
-                <th>Emp_Phone</th>
-                <th>Mnger_Id</th>
-                <th>Edit</th>
-                <th>Remove</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let emp of employee">
-                <td>{{emp.JOB_ID}}</td>
-                <td>{{emp.FIRST_NAME}}</td>
-                <td>{{emp.LAST_NAME}}</td>
-                <td>{{emp.EMAIL}}</td>
-                <td>{{emp.PHONE_NUMBER}}</td>
-                <td>{{emp.MANAGER_ID}}</td>
-                <td><a (click)="editEmployee(emp)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a (click)="removeEmployee(emp.EMPLOYEE_ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-2">
+            <div class="sidebar-menu bg-school">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link-a">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link-a">Teacher</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link-a">Staff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-a">Student</a>
+                      </li>
+                    <li class="nav-item">
+                      <a class="nav-link-a">Parent</a>
+                    </li>
+                  </ul>
+            </div>
+            <!-- <app-side-bar></app-side-bar> -->
+        </div><!--column end here-->
+        <div class="col-sm-12 col-md-10">
+            
+
+            <a class="float-right text-primary" (click)="addnewEmployee()"><i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i></a>
+            <div class="float-clear"></div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Emp_Job_Id</th>
+                            <th>Emp_F_Name</th>
+                            <th>Emp_L_Name</th>
+                            <th>Emp_Email</th>
+                            <th>Emp_Phone</th>
+                            <th>Mnger_Id</th>
+                            <th>Edit</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let emp of employee">
+                            <td>{{emp.JOB_ID}}</td>
+                            <td>{{emp.FIRST_NAME}}</td>
+                            <td>{{emp.LAST_NAME}}</td>
+                            <td>{{emp.EMAIL}}</td>
+                            <td>{{emp.PHONE_NUMBER}}</td>
+                            <td>{{emp.MANAGER_ID}}</td>
+                            <td><a (click)="editEmployee(emp)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                            <td><a (click)="removeEmployee(emp.EMPLOYEE_ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div><!--column end here-->
+    </div><!--row end here -->
+</div><!-- container fluid end here -->
+<p class="text-center bg-school p-2">@School Management System</p>
+<!-- <app-footer></app-footer> -->

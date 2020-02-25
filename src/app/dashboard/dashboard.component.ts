@@ -1,9 +1,11 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ConnectionService } from '../services/connection.service';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material'
+import { MAT_DIALOG_DATA } from '@angular/material'
+import { IUser } from '../interface/user-access';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,13 +17,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public employee: any = [];
   public unsubscribeList : Subscription;
   public employeeObj: any = {};
-  
-  constructor(private connectionService: ConnectionService,public dialog: MatDialog) { }
+  public user: IUser;
+  constructor(private connectionService: ConnectionService,public dialog: MatDialog, private authService: AuthService) { }
 
   ngOnInit() {
     this.unsubscribeList = this.connectionService.getEmployeeList().subscribe((data)=>{
       this.employee = data;
     })
+    this.user = this.authService.getUserDetail();
   }
   ngOnDestroy(){
     this.unsubscribeList.unsubscribe();
@@ -37,7 +40,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.unsubscribeList = this.connectionService.createEmployee(result).subscribe((data)=>{
-          console.log('data',data);
           this.employee = data;
         })
       }

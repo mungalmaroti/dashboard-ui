@@ -13,9 +13,11 @@ import { DashboardComponent,EditDialog } from './dashboard/dashboard.component';
 
 import { ConnectionService } from '../app/services/connection.service';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SideBarComponent } from './side-bar/side-bar.component';
 
+import { AuthInterceptor } from './services/auth-interceptor';
+import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,11 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     AppMaterialModule,
     HttpClientModule
   ],
-  providers: [ConnectionService],
+  providers: [ConnectionService,AuthService,{
+    provide:HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi:true
+  }],
   entryComponents:[EditDialog],
   bootstrap: [AppComponent]
 })

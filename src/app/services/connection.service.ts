@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -9,8 +9,11 @@ export class ConnectionService {
   
   constructor(private http: HttpClient) { }
 
+  // showUserLogin(user:any){
+  //   return this.http.get(environment.baseURL+'/api/users?username='+user.username+'&password='+user.password);
+  // }
   showUserLogin(user:any){
-    return this.http.get(environment.baseURL+'/api/users?username='+user.username+'&password='+user.password);
+    return this.http.post(environment.baseURL+'/auth/login',user);
   }
 
   getEmployeeList(){

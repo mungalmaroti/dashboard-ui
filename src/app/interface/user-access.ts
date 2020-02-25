@@ -1,5 +1,6 @@
 export interface IUser {
-    username :string;
-    password : string;
+    user :string;
     role : string;
+    access_token: string;
+    status: string;
 }

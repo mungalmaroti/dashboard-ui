@@ -1,0 +1,16 @@
+.nav-link-a{
+    padding: 1rem 1rem;
+    display: block;
+    background-color: #0057a2b5;
+    margin-bottom: 1px;
+    border-radius: 7px;
+    cursor: pointer;
+    color: #fff;
+}
+.sidebar-menu {
+	display: block;
+	height: 100%;
+    overflow: auto;
+    height: 81vh;
+    flex: 0 0 auto;
+}

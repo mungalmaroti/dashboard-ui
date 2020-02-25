@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from  '../services/auth.service';
+import { IUser } from '../interface/user-access';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   public currentDate:any;
-  constructor() {
+  public userDetail : IUser;
+  constructor( private authService: AuthService) {
     setInterval(() => {
       this.currentDate = Date.now();
     }, 1);
    }
 
+   logout(){
+     this.authService.doLogout();
+   }
   ngOnInit() {
+    this.userDetail =JSON.parse(localStorage.getItem('userDetail'));
   }
 
 }
