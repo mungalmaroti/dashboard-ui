@@ -3,7 +3,7 @@ import { ConnectionService } from '../services/connection.service';
 import { Subscription, from } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material'
+import { MAT_DIALOG_DATA,MatDialogRef } from '@angular/material'
 import { IUser } from '../interface/user-access';
 import { AuthService } from '../services/auth.service';
 

@@ -4,6 +4,8 @@ import { IUser } from '../interface/user-access';
 import { Router } from '@angular/router';
 import { ConnectionService } from '../services/connection.service';
 import { AuthService } from '../services/auth.service';
+import {FormGroup,FormControl,Validators,FormArray} from '@angular/forms';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,13 +14,19 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
   public getUser = {} as IUser;
   public user :any = {username:'',password:''};
+  public loginForm:FormGroup;
   constructor(private connectionService: ConnectionService, private route: Router, private authService:AuthService){}
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      'userData': new FormGroup({
+          'username':new FormControl(null,[Validators.required]),
+          'password':new FormControl(null,[Validators.required]),
+      })
+    });
   }
   public login(){
-    if(this.user && this.user.username && this.user.password ){
-      this.connectionService.showUserLogin(this.user).subscribe((data:any)=>{
+      this.connectionService.showUserLogin(this.loginForm.value.userData).subscribe((data:any)=>{
         if(data && data.user){
           this.authService.setUserDetail(data);
           localStorage.setItem('access_token',data.access_token);
@@ -27,6 +35,4 @@ export class LoginComponent implements OnInit {
         }
       })
     }
-  }
-
 }
